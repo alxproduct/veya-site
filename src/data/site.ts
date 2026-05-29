@@ -53,36 +53,17 @@ export const footer = {
       heading: 'Product',
       links: [
         { label: 'Why Veya', href: '#manifesto' },
-        { label: 'Safety architecture', href: '#how-it-works' },
         { label: 'How it works', href: '#how-it-works' },
-        { label: 'Pricing', href: '#pricing' },
+        { label: 'For Providers', href: '#for-providers' },
+        { label: 'For Seekers', href: '#for-seekers' },
       ],
     },
     {
       heading: 'Company',
       links: [
-        { label: 'About', href: '#about' },
+        { label: 'About', href: '#founder' },
         { label: 'From the founder', href: '#founder' },
-        { label: 'Press', href: '/press' },
         { label: 'Contact', href: 'mailto:hello_veya@pm.me' },
-      ],
-    },
-    {
-      heading: 'Safety',
-      links: [
-        { label: 'Trusted contacts', href: '/safety/trusted-contacts' },
-        { label: 'Reporting', href: '/safety/reporting' },
-        { label: 'Crisis resources', href: '/safety/crisis' },
-        { label: 'Harm-reduction partners', href: '/safety/partners' },
-      ],
-    },
-    {
-      heading: 'Legal',
-      links: [
-        { label: 'Terms', href: '/terms' },
-        { label: 'Privacy', href: '/privacy' },
-        { label: 'Imprint (Impressum)', href: '/impressum' },
-        { label: '§ ProstSchG context', href: '/legal/prostschg' },
       ],
     },
   ],
