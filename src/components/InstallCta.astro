@@ -1,0 +1,189 @@
+---
+import { installCta } from '~/data/landing';
+---
+
+<section
+  id="install"
+  class="install"
+  aria-labelledby="install-heading"
+>
+  <div
+    class="install__inner"
+    style={`background: var(${installCta.surfaceVar}); color: var(${installCta.textColorVar});`}
+  >
+    <div class="install__content">
+      <p class="eyebrow install__eyebrow">{installCta.eyebrow}</p>
+      <h2 id="install-heading" class="install__headline" set:html={installCta.headline} />
+      <p class="install__body">{installCta.body}</p>
+
+      <div class="install__ctas">
+        {
+          installCta.ctas.map((cta) => (
+            <a
+              href={cta.href}
+              class:list={[
+                'btn',
+                cta.variant === 'primary' ? 'btn--install-white' : 'btn--install-black',
+              ]}
+            >
+              <span>{cta.label}</span>
+              {cta.arrow && <span class="btn__arrow" aria-hidden="true">→</span>}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="install__visual">
+      <img
+        src={installCta.image.src}
+        alt={installCta.image.alt}
+        width="460"
+        height="527"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Outer section: full bleed (no horizontal padding) */
+  .install {
+    padding-inline: 0;
+    margin-block: var(--space-8);
+  }
+
+  /* Inner = the teal area itself, no border-radius — full bleed.
+     56px top/bottom internal padding. */
+  .install__inner {
+    border-radius: 0;
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .install__eyebrow {
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  .install__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: 600px;
+  }
+
+  /* Signifier Bold 80 / 80 / -2.4px per spec */
+  .install__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display-80);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: inherit;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 12ch;
+  }
+
+  /* Signifier Regular 18 */
+  .install__body {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body-large);
+    line-height: 1.5;
+    color: inherit;
+    opacity: 0.9;
+    max-width: 56ch;
+  }
+
+  .install__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  /* Visual: 460x527 image (per spec) */
+  .install__visual {
+    width: 460px;
+    height: 527px;
+    flex-shrink: 0;
+  }
+
+  .install__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* "Show me how" — WHITE button per spec */
+  :global(.btn--install-white) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    min-height: 48px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1;
+    border-radius: var(--radius-full);
+    background: var(--paper-50);
+    color: var(--ink-950);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  :global(.btn--install-white:hover) {
+    background: #FFFFFF;
+  }
+
+  /* "Download app" — BLACK button per spec */
+  :global(.btn--install-black) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    min-height: 48px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1;
+    border-radius: var(--radius-full);
+    background: var(--ink-950);
+    color: var(--paper-50);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  :global(.btn--install-black:hover) {
+    background: var(--ink-900);
+  }
+
+  @media (max-width: 1024px) {
+    .install {
+      padding-inline: 0;
+    }
+    .install__inner {
+      grid-template-columns: 1fr;
+      padding: var(--space-7) var(--space-5);
+      gap: var(--space-6);
+    }
+    .install__visual {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      aspect-ratio: 460 / 527;
+      margin-inline: auto;
+    }
+    .install__ctas {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

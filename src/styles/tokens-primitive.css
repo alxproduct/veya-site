@@ -1,0 +1,226 @@
+/* ============================================================================
+   PRIMITIVES — Raw color, spacing, radius, and typography values.
+   Lifted directly from Figma "Design System" page (v1.1, May 2026).
+   Never reference these directly in components — use semantic tokens instead.
+   ============================================================================ */
+
+:root {
+  /* Color ramps · 11 steps each, anchor brand at 500 */
+
+  /* Violet */
+  --violet-50:  #EFF1FF;
+  --violet-100: #D4DCFF;
+  --violet-200: #C7C6FF;
+  --violet-300: #ABA0FF;
+  --violet-400: #9B70FF;
+  --violet-500: #764FFF;
+  --violet-600: #6E2BFF;
+  --violet-700: #4A00CC;
+  --violet-800: #3700A0;
+  --violet-900: #240071;
+  --violet-950: #130048;
+
+  /* Teal (anchor brand) */
+  --teal-50:  #E5FBF7;
+  --teal-100: #B8F4E9;
+  --teal-200: #80EBDA;
+  --teal-300: #4DE3CC;
+  --teal-400: #4FF7C0;
+  --teal-500: #1FF5B0;
+  --teal-600: #00B8A2;
+  --teal-700: #0DC18C;
+  --teal-800: #005F54;
+  --teal-900: #00332D;
+  --teal-950: #001A10;
+
+  /* Pink */
+  --pink-50:  #FFECF5;
+  --pink-100: #FFD8E7;
+  --pink-200: #FFBAD4;
+  --pink-300: #FF93BA;
+  --pink-400: #EC6D9E;
+  --pink-500: #CC497F;
+  --pink-600: #A92A62;
+  --pink-700: #89154C;
+  --pink-800: #690437;
+  --pink-900: #480024;
+  --pink-950: #2A0011;
+
+  /* Orange */
+  --orange-50:  #FFECE1;
+  --orange-100: #FFD8C5;
+  --orange-200: #FFB99D;
+  --orange-300: #FF8F67;
+  --orange-400: #FF6532;
+  --orange-500: #E13C00;
+  --orange-600: #BB0E00;
+  --orange-700: #9A0000;
+  --orange-800: #760000;
+  --orange-900: #520000;
+  --orange-950: #310000;
+
+  /* Yellow */
+  --yellow-50:  #FFF2DE;
+  --yellow-100: #FFE3C0;
+  --yellow-200: #F8CC94;
+  --yellow-300: #ECAD56;
+  --yellow-400: #D68D00;
+  --yellow-500: #B86D00;
+  --yellow-600: #964F00;
+  --yellow-700: #7A3A00;
+  --yellow-800: #5C2800;
+  --yellow-900: #3F1800;
+  --yellow-950: #240800;
+
+  /* Blue */
+  --blue-50:  #E9F6FF;
+  --blue-100: #D2E9FF;
+  --blue-200: #B2D4FF;
+  --blue-300: #89B9FF;
+  --blue-400: #649AFF;
+  --blue-500: #4479EB;
+  --blue-600: #295AC7;
+  --blue-700: #1944A4;
+  --blue-800: #0C2F7F;
+  --blue-900: #041D59;
+  --blue-950: #000B37;
+
+  /* Green */
+  --green-50:  #EEF8F3;
+  --green-100: #DCECE5;
+  --green-200: #C2DBCF;
+  --green-300: #A0C4B4;
+  --green-400: #7FAA97;
+  --green-500: #5F8B78;
+  --green-600: #436E5C;
+  --green-700: #305647;
+  --green-800: #203F33;
+  --green-900: #122920;
+  --green-950: #05150F;
+
+  /* Success */
+  --success-50:  #E5FCEB;
+  --success-100: #CBF4D7;
+  --success-200: #A5E6BA;
+  --success-300: #6FD394;
+  --success-400: #35BA71;
+  --success-500: #009B50;
+  --success-600: #007C34;
+  --success-700: #006223;
+  --success-800: #004914;
+  --success-900: #003109;
+  --success-950: #001A01;
+
+  /* Warning (same as yellow, aliased for semantic clarity) */
+  --warning-50:  #FFF2DE;
+  --warning-100: #FFE3C0;
+  --warning-200: #F8CC94;
+  --warning-300: #ECAD56;
+  --warning-400: #D68D00;
+  --warning-500: #B86D00;
+  --warning-600: #964F00;
+  --warning-700: #7A3A00;
+  --warning-800: #5C2800;
+  --warning-900: #3F1800;
+  --warning-950: #240800;
+
+  /* Danger */
+  --danger-50:  #FFEBE6;
+  --danger-100: #FFD6CE;
+  --danger-200: #FFB7AB;
+  --danger-300: #FF8B7E;
+  --danger-400: #FF6056;
+  --danger-500: #E23632;
+  --danger-600: #BC0012;
+  --danger-700: #9A0000;
+  --danger-800: #770000;
+  --danger-900: #520000;
+  --danger-950: #320000;
+
+  /* Ink (neutral grays) */
+  --ink-50:  #F5F5F5;
+  --ink-100: #E8E8E8;
+  --ink-200: #D4D4D4;
+  --ink-300: #BABABA;
+  --ink-400: #9E9E9E;
+  --ink-500: #808080;
+  --ink-600: #636363;
+  --ink-700: #4D4D4D;
+  --ink-800: #383838;
+  --ink-900: #242424;
+  --ink-950: #121212;
+
+  /* Paper (warm neutrals — for body/canvas) */
+  --paper-50:  #F7F5F1;
+  --paper-100: #EAE8E4;
+  --paper-200: #D6D4D0;
+  --paper-300: #BABABA;
+  --paper-400: #9E9E9E;
+  --paper-500: #808080;
+  --paper-600: #636363;
+  --paper-700: #4D4D4D;
+  --paper-800: #383838;
+  --paper-900: #242424;
+  --paper-950: #121212;
+
+  /* ----- Spacing scale · 4px base unit ----- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ----- Radius scale ----- */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 999px;
+
+  /* ----- Typography (font families — sizes are in website-type.css) ----- */
+  /* Signifier (Klim Type Foundry, web-licensed for veya.app) is the display
+     family. Inter is the body/UI family. Both are loaded from /public/fonts.
+     The fallback chain is intentional: if Signifier fails to load, headlines
+     fall back to a system serif rather than to a sans, preserving the design
+     intent. */
+  --font-display: 'Signifier', 'Charter', 'Georgia', 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Line-height tokens — only used for non-Signifier text. Signifier
+     headlines use Klim's intended line-height (browser default `normal`). */
+  --leading-tight:  1.05;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+  --leading-loose:  1.7;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.08em;
+  --tracking-wider:   0.14em;
+
+  /* ----- Container widths ----- */
+  --container-narrow:  720px;
+  --container-base:    1024px;
+  --container-wide:    1328px;
+  --container-padding: var(--space-8);
+
+  /* ----- Z-index ----- */
+  --z-nav:    50;
+  --z-modal:  100;
+  --z-panic: 1000;
+
+  /* ----- Motion ----- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   150ms;
+  --duration-medium: 300ms;
+  --duration-slow:   500ms;
+}

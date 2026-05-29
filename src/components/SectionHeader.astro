@@ -1,0 +1,132 @@
+---
+interface Props {
+  eyebrow: string;
+  headline: string;
+  lead?: string;
+  id?: string;
+  headingLevel?: 'h2' | 'h3';
+  /* Each size variant carries its exact line-height and letter-spacing
+     per the Figma spec. */
+  size?: 'display-84' | 'display-80' | 'display-72' | 'display-64' | 'display-60' | 'display-56';
+}
+
+const { eyebrow, headline, lead, id, headingLevel = 'h2', size = 'display-72' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<header class:list={['section-header', 'two-col', `section-header--${size}`]}>
+  <p class="eyebrow section-header__eyebrow">{eyebrow}</p>
+  <div class="section-header__content">
+    <Heading id={id} class="section-header__headline" set:html={headline} />
+    {lead && <p class="section-header__lead">{lead}</p>}
+  </div>
+</header>
+
+<style>
+  .section-header {
+    margin-bottom: var(--space-7);
+    /* Align the eyebrow's TOP with the headline's CAP-LINE.
+       Headlines have line-height around the cap-height, so we shift the
+       eyebrow down by a calibrated amount per font-size. */
+    align-items: start;
+  }
+
+  /* Each variant calibrates the eyebrow nudge to align with its cap-line.
+     Eyebrow is 12px font, ~14px line-box. Headline cap-line sits a few px
+     down from its bounding box top. We push the eyebrow down by an amount
+     proportional to the headline's font-size. */
+
+  .section-header__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+
+  /* ------- display-84 ("The infrastructure is broken...") -------
+     spec: font-size 84, line-height 88, letter-spacing -2px → -0.024em */
+  .section-header--display-84 .section-header__headline {
+    font-size: var(--text-display-84);
+    line-height: calc(88 / 84);
+    letter-spacing: -0.024em;
+  }
+  .section-header--display-84 .section-header__eyebrow {
+    padding-top: 14px;  /* push eyebrow down to align with cap of 84px Signifier */
+  }
+
+  /* ------- display-80 ("Some kinds of work...", "Some things we deliberately don't do.", "Next-gen app...") -------
+     spec: 80 / 84 / -1.8px → -0.0225em */
+  .section-header--display-80 .section-header__headline {
+    font-size: var(--text-display-80);
+    line-height: calc(84 / 80);
+    letter-spacing: -0.0225em;
+  }
+  .section-header--display-80 .section-header__eyebrow {
+    padding-top: 12px;
+  }
+
+  /* ------- display-72 ("Three commitments...") -------
+     spec: 72 / 78 / -1.8px → -0.025em */
+  .section-header--display-72 .section-header__headline {
+    font-size: var(--text-display-72);
+    line-height: calc(78 / 72);
+    letter-spacing: -0.025em;
+  }
+  .section-header--display-72 .section-header__eyebrow {
+    padding-top: 10px;
+  }
+
+  /* ------- display-64 ("Built for what dating apps...") -------
+     spec: 64 / 78 / -1.8px → -0.028em (per "78" line-height from spec; ratio 78/64) */
+  .section-header--display-64 .section-header__headline {
+    font-size: var(--text-display-64);
+    line-height: calc(78 / 64);
+    letter-spacing: -0.028em;
+  }
+  .section-header--display-64 .section-header__eyebrow {
+    padding-top: 8px;
+  }
+
+  /* ------- display-60 (Founder) -------
+     spec: 60 / 66 / -1.4px → -0.023em */
+  .section-header--display-60 .section-header__headline {
+    font-size: var(--text-display-60);
+    line-height: calc(66 / 60);
+    letter-spacing: -0.023em;
+  }
+  .section-header--display-60 .section-header__eyebrow {
+    padding-top: 7px;
+  }
+
+  /* ------- display-56 (For Seekers / For Providers) -------
+     spec: 56 / 105% / -2% */
+  .section-header--display-56 .section-header__headline {
+    font-size: var(--text-display-56);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .section-header--display-56 .section-header__eyebrow {
+    padding-top: 6px;
+  }
+
+  .section-header__lead {
+    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body-large);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 64ch;
+  }
+
+  @media (max-width: 1024px) {
+    .section-header__headline {
+      max-width: 100%;
+    }
+    .section-header__eyebrow {
+      padding-top: 0;
+    }
+  }
+</style>

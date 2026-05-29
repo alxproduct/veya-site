@@ -1,0 +1,100 @@
+---
+import { maleEscort } from '~/data/landing';
+---
+
+<section class="male-escort section" aria-labelledby="male-escort-heading">
+  <div class="container">
+    <div class="male-escort__grid">
+      <div class="male-escort__content">
+        <h2 id="male-escort-heading" class="male-escort__headline" set:html={maleEscort.headline} />
+
+        <p class="male-escort__body">{maleEscort.body}</p>
+
+        <ul class="male-escort__tags" role="list">
+          {
+            maleEscort.tags.map((tag) => (
+              <li class="tag male-escort__tag">{tag}</li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="male-escort__image">
+        <img src={maleEscort.image.src} alt={maleEscort.image.alt} loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .male-escort__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .male-escort__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  /* Signifier Bold 80 / 84 / -1.8px */
+  .male-escort__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display-80);
+    line-height: calc(84 / 80);
+    letter-spacing: -0.0225em;
+    color: var(--text-primary);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  /* Signifier Regular 16 */
+  .male-escort__body {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 56ch;
+  }
+
+  .male-escort__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    margin-top: var(--space-2);
+  }
+
+  /* Bump the right padding slightly larger than left so the visual rhythm
+     reads even — '+ Same product' is left-anchored, the right edge feels
+     tight otherwise. */
+  .male-escort__tag {
+    padding-inline: var(--space-3) var(--space-4);
+  }
+
+  .male-escort__image {
+    aspect-ratio: 4 / 3;
+    background: var(--violet-700);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .male-escort__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1024px) {
+    .male-escort__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

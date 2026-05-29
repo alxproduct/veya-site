@@ -1,0 +1,88 @@
+---
+/**
+ * SEO head meta — applied to <head> by BaseLayout.
+ * Includes:
+ *  - Standard meta (title, description, canonical)
+ *  - OpenGraph + Twitter card meta
+ *  - JSON-LD Organization + WebSite + FAQ structured data
+ *  - Hidden FAQ block (rendered at end of body for crawlers)
+ */
+import { site } from '~/data/site';
+import { faq } from '~/data/landing';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+}
+
+const {
+  title = site.seo.title,
+  description = site.seo.description,
+  pathname = '/',
+} = Astro.props;
+
+const canonical = new URL(pathname, site.url).toString();
+const ogImage = new URL(site.seo.ogImage, site.url).toString();
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  email: site.contactEmail,
+  logo: new URL('/icons/icon-512.png', site.url).toString(),
+  description: site.seo.description,
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  description: site.seo.description,
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={site.seo.keywords.join(', ')} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#0A0A0A" />
+
+<!-- OpenGraph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="de_DE" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} is:inline />
+<script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} is:inline />
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} is:inline />

@@ -1,0 +1,59 @@
+/* ============================================================================
+   WEBSITE TYPE SCALE — Landing-page specific font sizes.
+
+   Exact pixel values from Figma. Letter-spacing and line-height applied
+   per-component using these tokens.
+   ============================================================================ */
+
+:root {
+  /* ----- Display headlines (Signifier Bold) ----- */
+  --text-hero:        108px;  /* Hero headline */
+  --text-display-84:   84px;  /* Manifesto: "The infrastructure is broken..." */
+  --text-display-80:   80px;  /* Good day Sir / Underserved / Line in sand / Why-PWA / Install CTA */
+  --text-display-72:   72px;  /* Commitments */
+  --text-display-64:   64px;  /* How it works */
+  --text-display-60:   60px;  /* Founder */
+  --text-display-56:   56px;  /* For Seekers / For Providers */
+  --text-card-title:   32px;  /* Card titles in Commitments + Underserved */
+
+  /* ----- UI text ----- */
+  --text-step-title:   20px;  /* How-it-works step titles (Inter Bold) */
+  --text-body-large:   18px;  /* Manifesto body, Why-PWA body */
+  --text-body:         16px;  /* Default body */
+  --text-small:        14px;  /* Step bodies, tag pills */
+  --text-footer-link:  13px;  /* Footer links */
+  --text-eyebrow:      12px;  /* All eyebrows */
+  --text-tag:          14px;
+
+  /* ----- Tracking ----- */
+  --tracking-hero: -0.028em;  /* -3px at 108px */
+}
+
+/* ----- Mobile overrides ----- */
+@media (max-width: 768px) {
+  :root {
+    --text-hero:        56px;
+    --text-display-84:  42px;
+    --text-display-80:  40px;
+    --text-display-72:  36px;
+    --text-display-64:  32px;
+    --text-display-60:  32px;
+    --text-display-56:  32px;
+    --text-card-title:  24px;
+    --text-step-title:  18px;
+    --text-body-large:  16px;
+  }
+}
+
+/* ----- Mid-breakpoint (1280px small desktop) ----- */
+@media (max-width: 1280px) and (min-width: 769px) {
+  :root {
+    --text-hero:        88px;
+    --text-display-84:  68px;
+    --text-display-80:  64px;
+    --text-display-72:  56px;
+    --text-display-64:  52px;
+    --text-display-60:  48px;
+    --text-display-56:  44px;
+  }
+}

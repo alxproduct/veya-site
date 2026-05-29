@@ -1,0 +1,113 @@
+---
+import { founder } from '~/data/landing';
+---
+
+<section id="founder" class="founder section" aria-labelledby="founder-heading">
+  <div class="container">
+    <div class="founder__grid">
+      <div class="founder__photo">
+        <div class="founder__photo-frame">
+          <img src={founder.card.image.src} alt={founder.card.image.alt} loading="lazy" />
+        </div>
+      </div>
+
+      <div class="founder__content">
+        <p class="eyebrow founder__eyebrow">{founder.eyebrow}</p>
+        <h2 id="founder-heading" class="founder__headline" set:html={founder.headline} />
+
+        <div class="founder__paragraphs">
+          {founder.paragraphs.map((para) => <p>{para}</p>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .founder__grid {
+    display: grid;
+    grid-template-columns: 588px 1fr;
+    gap: var(--space-7);
+    align-items: stretch;  /* content column matches image height — at minimum */
+  }
+
+  /* ----- Photo column ----- */
+  .founder__photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--violet-500);
+    isolation: isolate;
+  }
+
+  .founder__photo-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .founder__photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ----- Content column ----- */
+  /* No padding-top: content starts at the top of the row so the eyebrow
+     "07 ABOUT" aligns with the top edge of the image. The column then
+     extends downward as far as the paragraph copy needs, so it can be
+     taller than the image. */
+  .founder__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding-top: 0;
+  }
+
+  .founder__eyebrow {
+    padding-top: 0;
+  }
+
+  /* Signifier Bold 60 / 66 / -1.4px per spec */
+  .founder__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display-60);
+    line-height: calc(66 / 60);
+    letter-spacing: -0.023em;
+    color: var(--text-primary);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  .founder__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+  }
+
+  /* Founder body: Inter 16 Regular */
+  .founder__paragraphs p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 64ch;
+  }
+
+  @media (max-width: 1024px) {
+    .founder__grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .founder__photo {
+      max-width: 480px;
+      margin-inline: auto;
+      width: 100%;
+    }
+  }
+</style>

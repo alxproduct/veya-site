@@ -1,0 +1,135 @@
+/* ============================================================================
+   SEMANTIC TOKENS — Role-based aliases. THIS is what components reference.
+
+   DARK MODE IS THE DEFAULT for veya.app at launch. Light-mode values are
+   retained in the [data-theme="light"] block so they can be re-enabled later
+   if a theme toggle is added — but the site ships dark-only and is
+   hardcoded as such in BaseLayout.astro.
+   ============================================================================ */
+
+:root {
+  /* ----- Surfaces (DARK MODE — DEFAULT) ----- */
+  --surface-default:        var(--ink-950);
+  --surface-canvas:         #0A0A0A;
+  --surface-subtle:         var(--ink-900);
+  --surface-soft:           var(--ink-900);
+  --surface-soft-subtle:    var(--ink-950);
+  --surface-muted:          var(--ink-800);
+  --surface-inverse:        var(--paper-50);
+  --surface-overlay:        rgba(0, 0, 0, 0.7);
+
+  /* Brand surface (teal) — the primary accent.
+     Semantic surface/accent that several Figma layers reference. */
+  --surface-brand:          var(--teal-700);
+  --surface-brand-strong:   var(--teal-600);
+  --surface-brand-muted:    var(--teal-900);
+  --surface-brand-subtle:   var(--teal-950);
+  --surface-accent:         var(--teal-300); /* semantic/surface/accent */
+
+  --surface-violet:         var(--violet-500);
+  --surface-violet-strong:  var(--violet-700);
+  --surface-pink:           var(--pink-200);   /* "Meet on your own terms" pink */
+  --surface-pink-strong:    var(--pink-400);
+
+  --surface-danger-subtle:  var(--danger-950);
+  --surface-success-subtle: var(--success-950);
+  --surface-warning-subtle: var(--warning-950);
+
+  /* ----- Text ----- */
+  --text-primary:     var(--paper-50);
+  --text-secondary:   var(--ink-300);
+  --text-tertiary:    var(--ink-400);
+  --text-muted:       var(--ink-500);
+  --text-placeholder: var(--ink-500);
+  --text-disabled:    var(--ink-700);
+
+  --text-on-brand:    #FFFFFF;
+  --text-on-accent:   #FFFFFF;
+  --text-on-pink:     var(--ink-950);  /* dark text on pink backgrounds */
+  --text-on-violet:   #FFFFFF;
+  --text-on-inverse:  var(--ink-950);
+
+  --text-link:        var(--teal-300);
+  --text-link-hover:  var(--teal-200);
+
+  --text-danger:      var(--danger-400);
+  --text-success:     var(--success-400);
+  --text-warning:     var(--warning-300);
+
+  /* ----- Borders ----- */
+  --border-default: var(--ink-800);
+  --border-subtle:  var(--ink-900);
+  --border-strong:  var(--ink-600);
+  --border-inverse: var(--ink-200);
+  --border-brand:   var(--teal-500);
+  --border-focus:   var(--teal-400);
+  --border-danger:  var(--danger-500);
+  --border-success: var(--success-500);
+  --border-warning: var(--warning-500);
+
+  /* ----- Actions ----- */
+  --action-primary:         var(--paper-50);
+  --action-primary-hover:   #FFFFFF;
+  --action-primary-pressed: var(--ink-200);
+
+  --action-secondary:       transparent;
+  --action-secondary-hover: var(--ink-800);
+
+  --action-brand:           var(--teal-600);
+  --action-brand-hover:     var(--teal-500);
+  --action-brand-pressed:   var(--teal-700);
+
+  --action-accent:          var(--violet-400);
+  --action-accent-hover:    var(--violet-300);
+
+  --action-danger:          var(--danger-500);
+  --action-danger-hover:    var(--danger-400);
+
+  /* ----- Feedback ----- */
+  --feedback-danger:         var(--danger-500);
+  --feedback-danger-strong:  var(--danger-700);
+  --feedback-info:           var(--blue-500);
+  --feedback-info-strong:    var(--blue-700);
+  --feedback-success:        var(--success-500);
+  --feedback-success-strong: var(--success-700);
+  --feedback-warning:        var(--warning-500);
+  --feedback-warning-strong: var(--warning-700);
+}
+
+/* ============================================================================
+   LIGHT MODE — retained for future use only. Currently not triggered, as
+   BaseLayout doesn't set [data-theme="light"].
+   ============================================================================ */
+
+[data-theme="light"] {
+  --surface-default:        var(--paper-50);
+  --surface-canvas:         #FFFFFF;
+  --surface-subtle:         var(--ink-50);
+  --surface-soft:           var(--paper-100);
+  --surface-soft-subtle:    var(--paper-50);
+  --surface-muted:          var(--ink-100);
+  --surface-inverse:        var(--ink-950);
+  --surface-overlay:        rgba(18, 18, 18, 0.6);
+
+  --surface-brand:          var(--teal-600);
+  --surface-brand-strong:   var(--teal-800);
+  --surface-brand-muted:    var(--teal-100);
+  --surface-brand-subtle:   var(--teal-50);
+
+  --text-primary:     var(--ink-950);
+  --text-secondary:   var(--ink-700);
+  --text-tertiary:    var(--ink-500);
+  --text-muted:       var(--ink-400);
+
+  --text-on-inverse:  var(--paper-50);
+
+  --text-link:        var(--teal-700);
+
+  --border-default: var(--ink-200);
+  --border-subtle:  var(--ink-100);
+  --border-strong:  var(--ink-400);
+
+  --action-primary:         var(--ink-950);
+  --action-primary-hover:   var(--ink-900);
+  --action-primary-pressed: var(--ink-800);
+}

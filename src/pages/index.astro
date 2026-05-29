@@ -1,0 +1,59 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Hero from '~/components/Hero.astro';
+import Manifesto from '~/components/Manifesto.astro';
+import Commitments from '~/components/Commitments.astro';
+import HowItWorks from '~/components/HowItWorks.astro';
+import MaleEscort from '~/components/MaleEscort.astro';
+import UnderservedWork from '~/components/UnderservedWork.astro';
+import LineInSand from '~/components/LineInSand.astro';
+import WhyPwa from '~/components/WhyPwa.astro';
+import AudienceSection from '~/components/AudienceSection.astro';
+import Founder from '~/components/Founder.astro';
+import InstallCta from '~/components/InstallCta.astro';
+import Footer from '~/components/Footer.astro';
+import HiddenFaq from '~/components/HiddenFaq.astro';
+import { forSeekers, forProviders } from '~/data/landing';
+---
+
+<BaseLayout pathname="/">
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Manifesto />
+    <Commitments />
+    <HowItWorks />
+    <MaleEscort />
+    <UnderservedWork />
+    <LineInSand />
+    <WhyPwa />
+    <AudienceSection
+      id="for-seekers"
+      eyebrow={forSeekers.eyebrow}
+      headline={forSeekers.headline}
+      lead={forSeekers.lead}
+      image={forSeekers.image}
+      surfaceVar={forSeekers.surfaceVar}
+      textColorVar={forSeekers.textColorVar}
+      points={forSeekers.points}
+      cta={forSeekers.cta}
+    />
+    <AudienceSection
+      id="for-providers"
+      eyebrow={forProviders.eyebrow}
+      headline={forProviders.headline}
+      lead={forProviders.lead}
+      image={forProviders.image}
+      surfaceVar={forProviders.surfaceVar}
+      textColorVar={forProviders.textColorVar}
+      accentBarVar="--violet-500"
+      points={forProviders.points}
+      cta={forProviders.cta}
+    />
+    <Founder />
+    <InstallCta />
+    <HiddenFaq />
+  </main>
+  <Footer />
+</BaseLayout>

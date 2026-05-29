@@ -1,0 +1,118 @@
+---
+import { lineInSand } from '~/data/landing';
+import SectionHeader from '~/components/SectionHeader.astro';
+---
+
+<section id="line-in-sand" class="line-sand section" aria-labelledby="line-sand-heading">
+  <div class="container">
+    <SectionHeader
+      eyebrow={lineInSand.eyebrow}
+      headline={lineInSand.headline}
+      id="line-sand-heading"
+      size="display-80"
+      lead={lineInSand.lead}
+    />
+
+    <ul class="line-sand__grid" role="list">
+      {
+        lineInSand.items.map((item) => (
+          <li class="line-sand-item">
+            <span
+              class="line-sand-item__top-rule"
+              style={`background: var(${item.strikeColorVar});`}
+              aria-hidden="true"
+            />
+            <h3 class="line-sand-item__title">
+              {/* Line 1: "No" */}
+              <span class="line-sand-item__line">{item.preStrike}</span>
+              {/* Line 2: the struck phrase */}
+              <span class="line-sand-item__line">
+                <span
+                  class="line-sand-item__strike-word"
+                  style={`--strike-color: var(${item.strikeColorVar});`}
+                >{item.strikeWord}</span>
+              </span>
+            </h3>
+            <p class="line-sand-item__body">{item.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .line-sand__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+  }
+
+  .line-sand-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .line-sand-item__top-rule {
+    display: block;
+    width: 80px;
+    height: 3px;
+    border-radius: var(--radius-xs);
+    margin-bottom: var(--space-3);
+  }
+
+  .line-sand-item__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-card-title);
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .line-sand-item__line {
+    display: block;
+  }
+
+  /* Diagonal strike: runs across the full struck phrase */
+  .line-sand-item__strike-word {
+    display: inline-block;
+    position: relative;
+  }
+
+  .line-sand-item__strike-word::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 50%;
+    height: 3px;
+    background: var(--strike-color);
+    transform: translateY(-50%) rotate(-8deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  .line-sand-item__body {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 40ch;
+    margin-top: var(--space-3);
+  }
+
+  @media (max-width: 1024px) {
+    .line-sand__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

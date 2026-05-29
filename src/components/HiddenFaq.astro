@@ -1,0 +1,25 @@
+---
+/**
+ * Hidden FAQ — rendered in the DOM so search engines see real questions and
+ * answers matching the FAQ JSON-LD schema in SeoHead.astro. Hidden from sighted
+ * users with .sr-only so it never appears on screen.
+ *
+ * If you ever want a visible FAQ section, swap the wrapper class and add a
+ * section header.
+ */
+import { faq } from '~/data/landing';
+---
+
+<section class="sr-only" aria-hidden="true">
+  <h2>Frequently asked questions about Veya</h2>
+  <dl>
+    {
+      faq.map((item) => (
+        <>
+          <dt>{item.question}</dt>
+          <dd>{item.answer}</dd>
+        </>
+      ))
+    }
+  </dl>
+</section>

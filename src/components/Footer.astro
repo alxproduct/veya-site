@@ -1,0 +1,152 @@
+---
+import { site, footer } from '~/data/site';
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <hr class="footer__rule" />
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-top">
+          <img src="/svg/veya_wordmark.svg" alt="Veya" class="footer__logo" width="118" height="35" />
+          <p class="footer__tagline">{site.tagline}</p>
+        </div>
+        <p class="footer__copyright">{footer.copyright}</p>
+      </div>
+
+      {
+        footer.columns.map((col) => (
+          <nav class="footer__col" aria-label={col.heading}>
+            <p class="footer__col-heading eyebrow">{col.heading}</p>
+            <ul class="footer__col-links" role="list">
+              {col.links.map((link) => (
+                <li>
+                  <a href={link.href} class="footer__link">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <p class="footer__email">
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-7) var(--space-7);
+    margin-top: var(--space-9);
+  }
+
+  .footer__rule {
+    border: 0;
+    height: 1px;
+    background: var(--border-default);
+    margin-bottom: var(--space-7);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-7);
+    min-height: 180px;
+  }
+
+  .footer__logo {
+    height: 24px;
+    width: auto;
+  }
+
+  .footer__tagline {
+    margin-top: var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text-secondary);
+  }
+
+  .footer__copyright {
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .footer__col-heading {
+    margin-bottom: var(--space-5);
+  }
+
+  .footer__col-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer__link {
+    font-family: var(--font-body);
+    font-size: var(--text-footer-link);
+    color: var(--text-primary);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .footer__link:hover {
+    color: var(--text-link);
+  }
+
+  .footer__email {
+    margin-top: var(--space-5);
+    text-align: right;
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+  }
+
+  .footer__email a {
+    color: inherit;
+    border-bottom: 1px solid var(--border-default);
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .footer__email a:hover {
+    border-bottom-color: var(--text-primary);
+  }
+
+  @media (max-width: 1024px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-7) var(--space-5);
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+      min-height: auto;
+      gap: var(--space-5);
+    }
+
+    .footer__logo {
+      height: 20px;
+    }
+
+    .footer__email {
+      text-align: left;
+    }
+  }
+</style>

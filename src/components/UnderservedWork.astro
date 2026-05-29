@@ -1,0 +1,116 @@
+---
+import { underserved } from '~/data/landing';
+import SectionHeader from '~/components/SectionHeader.astro';
+---
+
+<section id="underserved" class="underserved section" aria-labelledby="underserved-heading">
+  <div class="container">
+    <SectionHeader
+      eyebrow={underserved.eyebrow}
+      headline={underserved.headline}
+      id="underserved-heading"
+      size="display-80"
+    />
+
+    <ul class="underserved__grid" role="list">
+      {
+        underserved.cards.map((card) => (
+          <li class="underserved-card">
+            <div
+              class="underserved-card__media"
+              style={`background: var(${card.surfaceVar});`}
+            >
+              <img src={card.image.src} alt={card.image.alt} loading="lazy" />
+            </div>
+            <div class="underserved-card__body">
+              <p class="underserved-card__label">{card.label}</p>
+              <h3 class="underserved-card__title" set:html={card.title} />
+              <p class="underserved-card__copy">{card.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .underserved__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .underserved-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-soft);
+    color: var(--paper-50);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .underserved-card__media {
+    height: 460px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .underserved-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .underserved-card__body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1;
+  }
+
+  .underserved-card__label {
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--paper-50);
+    opacity: 0.7;
+  }
+
+  /* Card title: Signifier Bold 32 / 36 / -0.5px */
+  .underserved-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-card-title);
+    line-height: calc(36 / 32);
+    letter-spacing: -0.015em;
+    color: var(--paper-50);
+    margin: 0;
+  }
+
+  .underserved-card__copy {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--paper-50);
+    opacity: 0.85;
+  }
+
+  @media (max-width: 1024px) {
+    .underserved__grid {
+      grid-template-columns: 1fr;
+    }
+    .underserved-card__media {
+      height: 320px;
+    }
+  }
+</style>

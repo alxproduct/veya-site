@@ -1,0 +1,147 @@
+---
+import { whyPwa } from '~/data/landing';
+---
+
+<section id="why-pwa" class="why-pwa section" aria-labelledby="why-pwa-heading">
+  <div class="container">
+    <div class="why-pwa__headline-wrap two-col">
+      <div></div>
+      <h2
+        id="why-pwa-heading"
+        class="why-pwa__headline"
+        set:html={whyPwa.headline}
+      />
+    </div>
+
+    <div class="why-pwa__body">
+      <p class="eyebrow why-pwa__eyebrow">{whyPwa.eyebrow}</p>
+      <div class="why-pwa__body-text">
+        <p>{whyPwa.bodyTop}</p>
+        <p>{whyPwa.bodyBottom}</p>
+      </div>
+    </div>
+
+    <div class="why-pwa__install" aria-labelledby="install-label">
+      <p id="install-label" class="why-pwa__install-label eyebrow">{whyPwa.installStripLabel}</p>
+      <hr class="why-pwa__install-rule" />
+      <ol class="why-pwa__steps" role="list">
+        {
+          whyPwa.steps.map((step) => (
+            <li class="install-step">
+              <span class="install-step__num" aria-hidden="true">{step.number}</span>
+              <div class="install-step__text">
+                <p class="install-step__title">{step.title}</p>
+                <p class="install-step__body">{step.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Signifier Bold 80 / 86 / -1.8px per spec */
+  .why-pwa__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display-80);
+    line-height: calc(86 / 80);
+    letter-spacing: -0.0225em;
+    color: var(--text-primary);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  .why-pwa__body {
+    margin-top: var(--space-7);
+    max-width: 540px;
+  }
+
+  .why-pwa__eyebrow {
+    margin-bottom: var(--space-4);
+  }
+
+  .why-pwa__body-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* Signifier Regular 18 */
+  .why-pwa__body-text p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body-large);
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .why-pwa__install {
+    margin-top: var(--space-8);
+  }
+
+  .why-pwa__install-label {
+    margin-bottom: var(--space-4);
+  }
+
+  .why-pwa__install-rule {
+    border: 0;
+    height: 1px;
+    background: var(--border-default);
+    margin-bottom: var(--space-5);
+  }
+
+  .why-pwa__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+    list-style: none;
+    padding: 0;
+  }
+
+  .install-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  /* Install step numbers — pink-400 per spec */
+  .install-step__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--pink-400);
+    flex-shrink: 0;
+    min-width: 24px;
+  }
+
+  .install-step__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .install-step__title {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .install-step__body {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1024px) {
+    .why-pwa__steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

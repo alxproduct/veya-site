@@ -1,0 +1,108 @@
+---
+import { site, nav } from '~/data/site';
+---
+
+<header class="nav-wrap">
+  <div class="container">
+    <div class="nav">
+      <a href="/" class="nav__logo" aria-label={`${site.name} — home`}>
+        <img src="/svg/veya_wordmark.svg" alt="Veya" class="nav__logo-img" width="118" height="35" />
+      </a>
+
+      <a href={nav.primary.href} class="nav__cta">
+        <span>{nav.primary.label}</span>
+        <span class="nav__cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Wrapper is invisible — no blur, no fill. */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+    padding-block: var(--space-4);
+    pointer-events: none;
+  }
+
+  .nav-wrap > .container {
+    pointer-events: auto;
+  }
+
+  /* The pill itself is where the glass effect lives */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3) var(--space-2) var(--space-5);
+    background: color-mix(in srgb, var(--ink-950) 55%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid color-mix(in srgb, var(--paper-50) 8%, transparent);
+    color: var(--text-primary);
+    border-radius: var(--radius-full);
+    min-height: 60px;
+  }
+
+  .nav__logo {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--space-2);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* translateY compensates for the visual weight of the "y" descender */
+  .nav__logo-img {
+    height: 20px;
+    width: auto;
+    display: block;
+    transform: translateY(2px);
+  }
+
+  .nav__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-canvas);
+    color: var(--text-primary);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 500;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .nav__cta:hover {
+    transform: translateX(1px);
+  }
+
+  .nav__cta-arrow {
+    display: inline-block;
+    transition: transform var(--duration-medium) var(--ease-out);
+  }
+
+  .nav__cta:hover .nav__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-wrap {
+      padding-block: var(--space-3);
+    }
+    .nav {
+      min-height: 52px;
+      padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+    }
+    .nav__logo-img {
+      height: 16px;
+    }
+    .nav__cta {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-small);
+    }
+  }
+</style>

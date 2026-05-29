@@ -1,0 +1,200 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import { site } from '~/data/site';
+---
+
+<BaseLayout
+  pathname="/install"
+  title={`${site.name} · Under construction · Almost ready`}
+  description="Veya is being built carefully. If you're an Escort, a Seeker, an investor, a journalist, a regulator, or just curious, we'd like to hear from you."
+>
+  <Nav />
+
+  <main id="main">
+    <section class="install-soon" aria-labelledby="install-soon-heading">
+      <div class="container install-soon__inner">
+        <div class="install-soon__visual" aria-hidden="true">
+          <div class="install-soon__stack">
+            <div class="install-soon__card install-soon__card--front">
+              <img src="/images/cat.webp" alt="" loading="eager" />
+            </div>
+          </div>
+        </div>
+
+        <div class="install-soon__content">
+          <p class="install-soon__code">404 · TECHNICALLY 503</p>
+          <h1 id="install-soon-heading" class="install-soon__headline">
+            Site under (very <em>deliberate</em>) construction.
+          </h1>
+
+          <div class="install-soon__paragraphs">
+            <p>
+              The cat is fine. The app is in progress. Veya is being built
+              carefully, by hand, for an industry that the rest of tech has
+              either ignored or commodified. What's worth doing is worth
+              not rushing.
+            </p>
+            <p>
+              <strong>If you're an Escort:</strong> we're designing this around
+              you. If something feels missing in every app you've ever used
+              for this work, tell us. The safety feature you wish existed.
+              The kind of verification that wouldn't leave you exposed. The
+              price model that wouldn't punish you for taking a week off.
+              Write to us. We read every one.
+            </p>
+            <p>
+              <strong>If you're a Seeker, an investor, a journalist, a
+              regulator, or just curious:</strong> write to us too. Especially
+              if you're an investor. Especially if you'd actually use Veya.
+              We want to hear from both.
+            </p>
+          </div>
+
+          <div class="install-soon__actions">
+            <a
+              href={`mailto:${site.contactEmail}?subject=Hello%20Veya`}
+              class="btn install-soon__btn-primary"
+            >
+              <span>Get in touch</span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .install-soon {
+    /* Fits within the viewport between nav and footer.
+       Top padding is small because the nav already has padding below it;
+       bottom padding gives breathing room before the footer. */
+    padding-block: var(--space-5) var(--space-7);
+    min-height: calc(100vh - 320px);  /* leave room for nav + footer */
+    display: flex;
+    align-items: center;
+  }
+
+  .install-soon__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-8);
+    align-items: center;
+    width: 100%;
+  }
+
+  /* ----- Visual: the cat image is already styled as a card. Just frame it. ----- */
+  .install-soon__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .install-soon__stack {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 4 / 5;
+  }
+
+  .install-soon__card--front {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .install-soon__card--front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ----- Content column ----- */
+  .install-soon__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .install-soon__code {
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+  }
+
+  .install-soon__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display-60);
+    line-height: calc(66 / 60);
+    letter-spacing: -0.023em;
+    color: var(--text-primary);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  .install-soon__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .install-soon__paragraphs p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 56ch;
+  }
+
+  /* Inline "If you're an Escort:" emphasis */
+  .install-soon__paragraphs strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .install-soon__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .install-soon__btn-primary {
+    background: var(--paper-50);
+    color: var(--ink-950);
+  }
+
+  .install-soon__btn-primary:hover {
+    background: #FFFFFF;
+  }
+
+  @media (max-width: 1024px) {
+    .install-soon {
+      min-height: auto;
+    }
+    .install-soon__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-7);
+    }
+    .install-soon__stack {
+      max-width: 320px;
+      margin-inline: auto;
+    }
+    .install-soon__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
