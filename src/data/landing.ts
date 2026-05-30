@@ -145,7 +145,7 @@ export const underserved = {
     {
       label: '01 · SENSUALITY & PHYSICALITY',
       title: 'Beauty is work, worth <em>paying for</em>.',
-      body: 'Providers who work with their physicality, in addition to safety, deserve to charge fairly for it. There are more than a thousand ways of beautiful things, sexual or otherwise. It is a service of the body too.',
+      body: 'People who wish to sell their physicality in addition to their artistry. There shouldn\'t be anything wrong with beautiful things, sexual or otherwise. It is up to us to promote a version of visual sexuality and charge for it.',
       image: { src: '/images/feet.webp', alt: 'Sensuality & physicality' },
       surfaceVar: '--pink-200',
     },
