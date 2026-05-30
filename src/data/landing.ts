@@ -71,7 +71,7 @@ export const commitments = {
     },
     {
       label: '03 · SAFETY',
-      title: 'Looks like a dating app, <em>works like a security</em> app.',
+      title: 'Looks like a dating app, <em>works like security</em>.',
       body: 'Pre-meet check-in, panic key, trusted contacts, real-time location share. Free, on every plan, forever.',
       image: { src: '/images/key.webp', alt: 'Safety' },
       surfaceVar: '--violet-500',  /* brand purple */
