@@ -202,7 +202,7 @@ export const lineInSand = {
 
 export const whyPwa = {
   eyebrow: '06 The architecture',
-  headline: 'Next-gen app, without the App Store. <em>Private by design</em>.',
+  headline: 'Next-gen app, no App Store. <em>Private by design</em>.',
   bodyTop:
     "Apple and Google ban adult-service apps. We don't fight that, we route around it. Veya is a PWA: a website that installs to your home screen in three taps and behaves like any native app. Same icon, same speed, same notifications. The only difference: no App Store record of you installing it.",
   bodyBottom:
