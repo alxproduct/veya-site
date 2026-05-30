@@ -53,7 +53,7 @@ export const manifesto = {
 
 export const commitments = {
   eyebrow: '02 What Veya is',
-  headline: 'Independence. <em>Privacy</em>. Safety.',
+  headline: 'Independence. Privacy.<br /><em>Safety</em>.',
   cards: [
     {
       label: '01 · RESPECT',
