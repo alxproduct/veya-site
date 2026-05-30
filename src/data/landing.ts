@@ -140,7 +140,7 @@ export const maleEscort = {
 
 export const underserved = {
   eyebrow: '04 Work the market has underserved',
-  headline: "<em>Every<em> kind of desire is acceptable.",
+  headline: "<em>Every</em> kind of desire is acceptable.",
   cards: [
     {
       label: '01 · SENSUALITY & PHYSICALITY',
