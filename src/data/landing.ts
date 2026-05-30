@@ -21,7 +21,7 @@ export const hero = {
     'Veya is a privacy-first app for adult Escorts and Clients designed around the person carrying the physical risk. No app store. No popularity ranking. No third parties taking the margin or the leverage.',
   ctas: [
     { label: 'Download app', href: '/install', variant: 'primary' as const, arrow: false },
-    { label: 'Show pitch deck', href: 'https://drive.proton.me/urls/3F6V64R84R#Wxth1kuOt8l3', variant: 'secondary' as const, arrow: true },
+    { label: 'Show pitch deck', href: 'https://drive.proton.me/urls/264B9YXRAW#eo25Wxb1rzV7', variant: 'secondary' as const, arrow: true },
   ],
   trustStrip: [
     { dash: '—', label: 'KYC-verified Escorts' },
